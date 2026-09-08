@@ -1,0 +1,14 @@
+version: "3.5"
+
+services:
+  adb:
+    image: ghcr.io/datf/adb-runner:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+      platforms:
+        - linux/amd64
+        - linux/arm64
+    container_name: adb
+    volumes:
+      - .:/app:z

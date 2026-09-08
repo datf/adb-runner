@@ -1,0 +1,34 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "assigneesFromCodeOwners": true,
+  "customManagers": [
+    {
+      "customType": "regex",
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=(?<datasource>[a-z-]+)\\s*depName=(?<depName>[^\\s]+)(?:\\s+versioning=(?<versioning>[a-z-]+))?\\s*\\r?\\n(?:ENV|ARG)\\s+[A-Z0-9_]+_VERSION[=\\s]+\"?(?<currentValue>[^\\s\"]+)\"?"
+      ],
+      "managerFilePatterns": [
+        "/(^|/|\\\\.)Dockerfile$/"
+      ]
+    }
+  ],
+  "packageRules": [
+    {
+      "groupName": "App base image",
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "automerge": true
+    }
+  ],
+  "baseBranchPatterns": [
+    "master"
+  ]
+}
