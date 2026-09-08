@@ -58,11 +58,9 @@ You can add an alias to your `~/.bashrc` or `~/.zshrc` so you can launch the con
 
 ```bash
 # For Podman users (recommended)
-alias copier='podman run -it --rm -v "$(pwd):/app:z" ghcr.io/datf/adb-runner:latest'
 alias adb-runner='podman run -it --rm -v "$(pwd):/app:z" ghcr.io/datf/adb-runner:latest'
 
 # For Docker users
-alias copier='docker run -it --rm -v "$(pwd):/app:z" ghcr.io/datf/adb-runner:latest'
 alias adb-runner='docker run -it --rm -v "$(pwd):/app:z" ghcr.io/datf/adb-runner:latest'
 ```
 
