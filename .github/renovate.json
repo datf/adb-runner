@@ -11,7 +11,7 @@
     {
       "customType": "regex",
       "matchStrings": [
-        "#\\s*renovate:\\s*datasource=(?<datasource>[a-z-]+)\\s*depName=(?<depName>[^\\s]+)(?:\\s+versioning=(?<versioning>[a-z-]+))?\\s*\\r?\\n(?:ENV|ARG)\\s+[A-Z0-9_]+_VERSION[=\\s]+\"?(?<currentValue>[^\\s\"]+)\"?"
+        "#\\s*renovate:\\s*datasource=(?<datasource>[a-z-]+)(?:\\s*depName=(?<depName>[^\\s]+))?(?:\\s+packageName=(?<packageName>[a-z0-9_.-]+))?(?:\\s+versioning=(?<versioning>[a-z-]+))?\\s*\\r?\\n(?:ENV|ARG)\\s+[A-Z0-9_]+_VERSION[=\\s]+\"?(?<currentValue>[^\\s\"]+)\"?"
       ],
       "managerFilePatterns": [
         "/(^|/|\\\\.)Dockerfile$/"
@@ -19,6 +19,14 @@
     }
   ],
   "packageRules": [
+    {
+      "matchDatasources": ["apk"],
+      "automerge": true,
+      "registryUrls": [
+        "https://dl-cdn.alpinelinux.org/alpine?branch=v3.24&components=main,community&arch=x86_64",
+        "https://dl-cdn.alpinelinux.org/alpine?branch=v3.24&components=main,community&arch=aarch64"
+      ]
+    },
     {
       "groupName": "App base image",
       "matchUpdateTypes": [
