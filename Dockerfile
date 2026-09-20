@@ -1,4 +1,4 @@
-FROM docker.io/alpine:3.24.1
+FROM docker.io/alpine:3.24.2
 
 LABEL org.opencontainers.image.source=https://github.com/datf/adb-runner
 LABEL org.opencontainers.image.description="Runner for adb"
